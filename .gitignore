@@ -1,0 +1,7 @@
+*.csv
+*.xlsx
+*.xls
+db/
+*.tar.gz
+*.rar
+code/static/upload

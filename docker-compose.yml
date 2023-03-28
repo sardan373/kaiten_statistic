@@ -1,0 +1,39 @@
+version: "3.9"
+   
+services:
+  db:
+    image: postgres
+    volumes:
+      - ./db:/var/lib/postgresql/data
+    environment:
+      - POSTGRES_NAME=postgres
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
+    ports:
+      - "5436:5432"
+
+  app:
+    build:
+      context: ./docker
+      dockerfile: Dockerfile
+    command: python manage.py runserver 0.0.0.0:8000
+    # command: sleep 1000000
+    volumes:
+      - ./code:/code
+    working_dir: /code
+    environment:
+      - POSTGRES_NAME=postgres
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
+    depends_on:
+      - db
+
+  nginx:
+    image: nginx:latest
+    volumes:
+      - ./code/static/:/code/static/
+      - ./nginx/conf.d:/etc/nginx/conf.d
+    ports:
+      - "8040:80"
+    depends_on:
+      - app
