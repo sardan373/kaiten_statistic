@@ -1,7 +1,6 @@
 <style>
     table {
         table-layout: fixed;
-        /* width: 10%; */
         border-collapse: collapse;
         border: 1px solid black;
     }
@@ -37,7 +36,8 @@
             {% endfor %}
         </td>
     </tr>
-{% for month, data in months.items %}
+
+    {% for month, data in months.items %}
     <tr>
         <td>
             {{ month }}
@@ -51,5 +51,5 @@
             {% endfor %}
         </td>
     </tr>
-{% endfor %}
+    {% endfor %}
 </table>
