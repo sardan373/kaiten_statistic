@@ -5,3 +5,4 @@ db/
 *.tar.gz
 *.rar
 code/static/upload
+.env

@@ -1,0 +1,3 @@
+[flake8]
+[tool.black]
+line-length = 79

@@ -17,7 +17,6 @@ services:
       context: ./docker
       dockerfile: Dockerfile
     command: python manage.py runserver 0.0.0.0:8000
-    # command: sleep 1000000
     volumes:
       - ./code:/code
     working_dir: /code
@@ -25,6 +24,8 @@ services:
       - POSTGRES_NAME=postgres
       - POSTGRES_USER=postgres
       - POSTGRES_PASSWORD=postgres
+    env_file:
+      - .env
     depends_on:
       - db
 
