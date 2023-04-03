@@ -1,0 +1,55 @@
+<style>
+    table {
+        table-layout: fixed;
+        /* width: 10%; */
+        border-collapse: collapse;
+        border: 1px solid black;
+    }
+    th,
+    td {
+        padding: 20px;
+        border: 1px solid black;
+    }
+</style>
+
+<h1>Statistic</h1>
+
+<table>
+    
+</table>
+
+<table>
+    <tr>
+        <th>месяц</th>
+        <th>сумма размеров</th>
+        <th>список задач</th>
+    </tr>
+    <tr>
+        <td>
+            progress
+        </td>
+        <td>
+            {{ progress.size }}
+        </td>
+        <td>
+            {% for task in progress.task_list %}
+                {{ task.name }} ({{ task.size }}): {{ task.progress }} -> {{ task.review }}<br>
+            {% endfor %}
+        </td>
+    </tr>
+{% for month, data in months.items %}
+    <tr>
+        <td>
+            {{ month }}
+        </td>
+        <td>
+            {{ data.size }}
+        </td>
+        <td>
+            {% for task in data.task_list %}
+                {{ task.name }} ({{ task.size }})<br>{{ task.progress }} -> {{ task.review }}<br>
+            {% endfor %}
+        </td>
+    </tr>
+{% endfor %}
+</table>
